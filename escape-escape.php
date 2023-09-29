@@ -14,3 +14,9 @@ function escape_escape_enqueue_scripts() {
 	wp_enqueue_script( 'escape-escape', plugins_url( 'escape-escape.js', __FILE__ ), 1 );
 	wp_enqueue_script( 'mousetrap', 'https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js' );
 }
+
+add_action( 'wp_logout', 'escape_escape_go_home_after_logout' );
+function escape_escape_go_home_after_logout(){
+	wp_safe_redirect( home_url() );
+	exit;
+}
